@@ -8,6 +8,7 @@
 body {
     background: url(../images/bg-mobile.svg) no-repeat top center,
     var(--violet);
+    background-size: contain;
     font-family: 'Poppins', sans-serif;
     color: #fff;
 }
@@ -17,6 +18,11 @@ body {
     text-align: center;
     display: grid;
     place-items: center;
+    grid-template-areas: 
+        "logo"
+        "image"
+        "info"
+        "social";
 }
 
 .page__logo {
@@ -24,14 +30,17 @@ body {
     display: flex;
     justify-self: flex-start;
     margin-left: 2rem;
+    grid-area: logo;
 }
 
 .page__image {
     width: 80%;
+    grid-area: image;
 }
 
 .page__info {
     margin: 0 2.2rem;
+    grid-area: info;
 }
 
 .page__info-title {
@@ -45,7 +54,7 @@ body {
     padding-block: 0.75rem 1.5rem;
 }
 
-.page__info-button{
+.page__info-button {
     background: #fff;
     color: var(--violet);
     font-family: 'Poppins', sans-serif;
@@ -54,6 +63,10 @@ body {
     border-radius: 2rem;
     padding: 0.75rem 4.75rem;
     box-shadow: 0px 2px 4px 1px rgb(65 35 142 / 75%);
+}
+
+.page__social {
+    grid-area: social;
 }
 
 .page__social-button {
@@ -68,6 +81,77 @@ body {
     margin: 0.15rem;
 }
 
-/* To-do:
-    - desktop layout
-        - active state */
+@media only screen and (min-width: 1200px) {
+    body {
+        background: url(../images/bg-desktop.svg) no-repeat,
+        var(--violet);
+        background-size: contain;
+    }
+
+    .page {
+        grid-template-areas: 
+        "logo logo"
+        "image info"
+        "social social";
+    }
+
+    .page__logo {
+        width: 15%;
+        margin: 0;
+    }
+
+    .page__image {
+        display: contents;
+    }
+
+    .page__info {
+        margin: 4rem 0 0;
+        height: 50%;
+        width: 50ch;
+        text-align: left;
+        align-self: start;
+        justify-self: start;
+    }
+
+    .page__info-title {
+        font-size: 2.5rem;
+    }
+
+    .page__info-text {
+        font-size: 1.1rem;
+        line-height: 1.75rem;
+        padding-block: 1.15rem 1.5rem;
+    }
+
+    .page__info-button {
+        font-size: 1rem;
+        padding: 1rem 4.25rem;
+        box-shadow: 0px 4px 5px 5px rgb(65 35 142 / 25%);
+    }
+
+    .page__info-button:hover {
+        background: var(--soft-magenta);
+        color: #fff;
+        cursor: pointer;
+    }
+            
+    .page__social {
+        display: flex;
+        align-self: start;
+        justify-self: end;
+        margin: 1em 4.25em 0 0;
+    }
+
+    .page__social-button {
+        font-size: 1rem;
+        height: 2.5rem;
+        width: 2.5rem;
+        margin: 0.5rem;
+    }
+
+    .page__social-button:hover {
+        color: var(--soft-magenta);
+        border: 1px solid var(--soft-magenta);
+        cursor: pointer;
+    }
+}
